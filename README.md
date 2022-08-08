@@ -55,8 +55,9 @@ import { KBTween } from ".../tween.js";
 import { easings } from ".../easingpackage.js";
 
 var k = kaboom(); // Make Kaboom global but also a variable
-var	twnlib = KBTween(k); // Create new TweenLib instance, pass in Kaboom
-
+var twnlib = KBTween(k); // Create new TweenLib instance, pass in Kaboom
+                         // This fixes Intellisense on VSCode not picking up on how Kaboom imports plugins
+                         // Otherwise, if your IDE is smart enough, you can just pass in the tween lib normally, using KBTween as a plugin
 loadBean();
 
 var bean = add([
