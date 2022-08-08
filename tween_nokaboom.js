@@ -12,7 +12,7 @@
  * @param {Object} config - The properties that defined how to style this animation.
  * @param {number} [loops] - How many times the tween has looped.
  */
- export function KBTween(k) {
+ export function KBTween() {
 	const tweentypes = {
 		NORMAL: 0,
 		FOREVER: 2,
