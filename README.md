@@ -51,11 +51,11 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
 
 ## Example
 ```js
-import { KBTween } from "./KBTweenV2/tween.js";
+import { KBTween } from ".../tween.js";
+import { easings } from ".../easingpackage.js";
 
-kaboom({
-	plugins: [KBTween]
-});
+var k = kaboom(); // Make Kaboom global but also a variable
+var	twnlib = KBTween(k); // Create new TweenLib instance, pass in Kaboom
 
 loadBean();
 
@@ -65,21 +65,21 @@ var bean = add([
 	color(255, 255, 255)
 ]);
 
-tween(bean.pos, [ "x" ], {
-	from: 64,
-	to: 512,
-	time: 1.2,
+twnlib.tween(bean.pos, [ "x" ], {
+	from: 0,
+	to: width() - 64,
+	time: 3.2,
 	type: 8
 });
 
-var stopTween = tween(bean.pos, [ "y" ], {
-	from: 64,
-	to: 512,
-	time: 0.7,
+twnlib.tween(bean.pos, [ "y" ], {
+	from: 0,
+	to: height() - 64,
+	time: 2,
 	type: 8
 });
 
-tween(bean.color, [ "b" ], {
+twnlib.tween(bean.color, [ "g", "r" ], {
 	from: 255,
 	to: 0,
 	time: 0.25,
