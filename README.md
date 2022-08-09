@@ -6,6 +6,11 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
 - **Requires** a JavaScript version that supports ES6 functionality
 - **Recommends** Visual Studio Code
 - **Recommends** VS Code Intellisense for JSDocs
+### `JSTween.js`
+- **DO NOT USE** Node.js - this lib depends on `Window.requestAnimationFrame`
+- **Requires** a JavaScript version that supports ES6 functionality
+- **Recommends** Visual Studio Code
+- **Recommends** VS Code Intellisense for JSDocs
 ### `easingpackage.js`
 - **Requires** a JavaScript version that supports ES6 functionality
 - **Can be used with** Kaboom, any version
@@ -66,7 +71,7 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
 ## Example
 `KBTween.js`
 ```js
-import { KBTween } from ".../tween.js";
+import { KBTween } from ".../KBTween.js";
 import { easings } from ".../easingpackage.js";
 
 var k = kaboom(); // Make Kaboom global but also a variable
