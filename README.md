@@ -1,7 +1,7 @@
 # KBTweenLib
 A tween library for Kaboom that allows easy usage of tweens. It also comes with a package for eases, so you can use it with Kaboom's `lerp()` function if you really wanted.
 ## Dependencies
-### `tween.js`
+### `KBTween.js`
 - **Requires** Kaboom v2000 or later
 - **Requires** a JavaScript version that supports ES6 functionality
 - **Recommends** Visual Studio Code
@@ -9,14 +9,14 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
 ### `easingpackage.js`
 - **Requires** a JavaScript version that supports ES6 functionality
 - **Can be used with** Kaboom, any version
-## Differences between `tween.js` and `tween_nokaboom.js`
+## Differences between `KBTween.js` and `JSTween.js`
 
-### `tween.js`
+### `KBTween.js`
 - Smaller file size, but depends heavily on Kaboom functions
 - Perfect for Kaboom games
 - Uses `onUpdate()`, `lerp()`, and `time()`
 
-### `tween_nokaboom.js`
+### `JSTween.js`
 - Bigger file size, but not dependent on Kaboom at all
 - Uses `performance.now()`, a very precise and lightweight time getter function
 - Do not use while making a Kaboom game, it would be pointless! Use for normal JS Canvas games instead.
@@ -64,7 +64,7 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
 - private `__NOOP: Function`
 
 ## Example
-`tween.js`
+`KBTween.js`
 ```js
 import { KBTween } from ".../tween.js";
 import { easings } from ".../easingpackage.js";
@@ -102,16 +102,16 @@ twnlib.tween(bean.color, [ "g", "r" ], {
 	type: tweentypes.PINGPONG
 });
 ```
-`tween_nokaboom.js`
+`JSTween.js`
 ```html
 <p>Points: <span id="number">0</span></p>
 <script type="module" src="...js"></script>
 ```
 ```js
-import { KBTween } from ".../tween_nokaboom.js";
+import { JSTween } from ".../JSTween.js";
 import { easings } from ".../easingpackage.js";
 
-var twnlib = KBTween();
+var twnlib = JSTween();
 
 twnlib.tween(document.getElementById("number"), ["innerHTML"], {
 	from: 0,
