@@ -25,7 +25,8 @@ A tween library for Kaboom that allows easy usage of tweens. It also comes with 
     - *`.onStart?: Function()` - What to run when the tween starts.*
     - *`.onUpdate?: onUpdate()` - What to run every time the tween updates.*
     - *`.onFinish?: onFinish()` - What to run when the tween ends.*
-- `return` - `: Function(clean?)` - End the tween manually.
+- `return` - `: Function()` - End the tween manually.
+    - *`0` - `clean?: bool` - Whether the tween should end where it is (true) or end at `time.to` (false).*
 
 `onFinish` - What to run when the tween ends.
 
