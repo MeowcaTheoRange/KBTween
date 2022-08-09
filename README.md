@@ -70,20 +70,20 @@ twnlib.tween(bean.pos, [ "x" ], {
 	from: 0,
 	to: width() - 64,
 	time: 3.2,
-	type: 8
+	type: tweentypes.PINGPONG
 });
 
 twnlib.tween(bean.pos, [ "y" ], {
 	from: 0,
 	to: height() - 64,
 	time: 2,
-	type: 8
+	type: tweentypes.PINGPONG
 });
 
 twnlib.tween(bean.color, [ "g", "r" ], {
 	from: 255,
 	to: 0,
 	time: 0.25,
-	type: 8
+	type: tweentypes.PINGPONG
 });
 ```
