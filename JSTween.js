@@ -4,7 +4,8 @@
  * @param {number} second
  * @param {number} percent
  * @param {number} easePercent
- * @param {number} value
+ * @param {number} value - The value, without prefix/suffix formatting.
+ * @param {string} formattedValue - The value, with prefix/suffix formatting.
  */
 /**
  * @callback onFinish - What to run when the tween ends.
@@ -38,6 +39,8 @@
 	 * @param {Function} [config.onStart] - What to run when the tween starts.
 	 * @param {onUpdate} [config.onUpdate] - What to run every time the tween updates.
 	 * @param {onFinish} [config.onFinish] - What to run when the tween ends.
+	 * @param {string} [config.prefix] - What string to put before the value.
+	 * @param {string} [config.suffix] - What string to put after the value.
 	 * @returns {Function} - End the tween manually.
 	 */
 	const tween = (object, prop, time, config) => {
@@ -47,6 +50,8 @@
 		config.onStart = config.onStart ?? tweentypes.__NOOP;
 		config.onUpdate = config.onUpdate ?? tweentypes.__NOOP;
 		config.onFinish = config.onFinish ?? tweentypes.__NOOP;
+		config.prefix = config.prefix ?? "";
+		config.suffix = config.suffix ?? "";
 
 		var frame = 0;
 		var startTime = performance.now() / 1000;
@@ -57,13 +62,13 @@
 			var curTime = (performance.now() / 1000) - startTime;
 			var curPercent = curTime / time.time;
 			for (let i in prop) {
-				object[prop[i]] = lerp(time.from, time.to, config.ease(curPercent));
+				object[prop[i]] = config.prefix + lerp(time.from, time.to, config.ease(curPercent)) + config.suffix;
 			}
 			if (curPercent >= 1) {
 				switch (time.type) {
 					case 0:
 						for (let i in prop) {
-							 object[prop[i]] = time.to;
+							object[prop[i]] = config.prefix + time.to + config.suffix;
 						}
 						loopIsDone = false;
 						break;
@@ -82,7 +87,7 @@
 				loops++;
 				config.onFinish(time, config, loops);
 			}
-			config.onUpdate(frame, curTime, curPercent, config.ease(curPercent), lerp(time.from, time.to, config.ease(curPercent)));
+			config.onUpdate(frame, curTime, curPercent, config.ease(curPercent), lerp(time.from, time.to, config.ease(curPercent)), config.prefix + lerp(time.from, time.to, config.ease(curPercent)) + config.suffix);
 			frame++;
 			if (loopIsDone) {
 				window.requestAnimationFrame(updateFunc);
@@ -92,7 +97,7 @@
 		return (clean) => {
 			if (!clean) {
 				for (let i in prop) {
-					 object[prop[i]] = time.to;
+					 object[prop[i]] = config.prefix + time.to + config.suffix;
 				}
 			}
 			time.type = 0;
